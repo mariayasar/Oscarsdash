@@ -9,6 +9,10 @@ import plotly.express as px
 # Imports from this application
 from app import app
 
+from joblib import load
+mypipeline = load('assets/mypipeline.joblib')
+
+
 # 2 column layout. 1st column width = 4/12
 # https://dash-bootstrap-components.opensource.faculty.ai/l/components/layout
 column1 = dbc.Col(
@@ -16,17 +20,18 @@ column1 = dbc.Col(
         dcc.Markdown(
             """
         
-            ## Your Value Proposition
+            ## Predicting Oscars for Best Motion Picture
 
-            Emphasize how the app will benefit users. Don't emphasize the underlying technology.
-
-            ✅ RUN is a running app that adapts to your fitness levels and designs personalized workouts to help you improve your running.
-
-            ❌ RUN is the only intelligent running app that uses sophisticated deep neural net machine learning to make your run smarter because we believe in ML driven workouts.
+            This web app is using data about Oscar Awards for the Best Motion Pictue since 1942 as attempt to demystify the magic of cinematography, and predict future winners. 
+            
+            It's a great tool to consider factors that make an award-winning movie - those we can measure and those we can't quantify, and what it tells about our culture. 
+            
+            Movie buffs should enjoy! 
+  
 
             """
         ),
-        dcc.Link(dbc.Button('Your Call To Action', color='primary'), href='/predictions')
+        dcc.Link(dbc.Button('Predict awards', color='primary'), href='/predictions')
     ],
     md=4,
 )
